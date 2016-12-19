@@ -17,8 +17,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,7 +32,9 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
 import org.apache.cordova.LOG;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,8 +42,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 
 public class CameraActivity extends Fragment {
 
@@ -751,7 +751,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			// Convert YuV to Jpeg
 			Rect rect = new Rect(0, 0, w, h);
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-			yuvImage.compressToJpeg(rect, 80, outputStream);
+			yuvImage.compressToJpeg(rect, 90, outputStream);
 			return outputStream.toByteArray();
 		}
 		return data;
