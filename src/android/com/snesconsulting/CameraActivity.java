@@ -609,8 +609,12 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			camera.setPreviewDisplay(mHolder);
 			Camera.Parameters parameters = camera.getParameters();
 			parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
-			parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-			camera.setParameters(parameters);
+			//parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+      try {
+        camera.setParameters(parameters);
+      }catch (Exception e){
+        e.printStackTrace();
+      }
 		}
 		catch (IOException exception) {
 			Log.e(TAG, exception.getMessage());
@@ -729,7 +733,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 			// the preview.
 			Camera.Parameters parameters = mCamera.getParameters();
 			parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
-			parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+			//parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
 			requestLayout();
 
 			mCamera.setParameters(parameters);
