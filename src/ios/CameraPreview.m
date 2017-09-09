@@ -22,18 +22,20 @@
         return;
     }
     
-    if (command.arguments.count > 3) {
+    if (command.arguments.count > 5) {
         CGFloat x = (CGFloat)[command.arguments[0] floatValue] + self.webView.frame.origin.x;
         CGFloat y = (CGFloat)[command.arguments[1] floatValue] + self.webView.frame.origin.y;
         CGFloat width = (CGFloat)[command.arguments[2] floatValue];
         CGFloat height = (CGFloat)[command.arguments[3] floatValue];
-        NSString *defaultCamera = command.arguments[4];
-        BOOL tapToTakePicture = (BOOL)[command.arguments[5] boolValue];
-        BOOL dragEnabled = (BOOL)[command.arguments[6] boolValue];
-        BOOL toBack = (BOOL)[command.arguments[7] boolValue];
-        CGFloat alpha  = (CGFloat)[command.arguments[8] floatValue];
-        BOOL toGallery = (BOOL)[command.arguments[9] boolValue];
-        CGFloat compression = ((CGFloat)[command.arguments[10] floatValue])/100.0;
+        CGFloat imgwidth = (CGFloat)[command.arguments[4] floatValue];
+        CGFloat imgheight = (CGFloat)[command.arguments[5] floatValue];
+        NSString *defaultCamera = command.arguments[6];
+        BOOL tapToTakePicture = (BOOL)[command.arguments[7] boolValue];
+        BOOL dragEnabled = (BOOL)[command.arguments[8] boolValue];
+        BOOL toBack = (BOOL)[command.arguments[9] boolValue];
+        CGFloat alpha  = (CGFloat)[command.arguments[10] floatValue];
+        BOOL toGallery = (BOOL)[command.arguments[11] boolValue];
+        CGFloat compression = ((CGFloat)[command.arguments[12] floatValue])/100.0;
         self.storeToGalery = toGallery;
         self.compression = compression;
         // sleep(3);
@@ -323,25 +325,25 @@
     
     switch ([anImage imageOrientation]) {
         case UIImageOrientationUp :
-        rotation_radians = 0.0;
-        break;
-        
+            rotation_radians = 0.0;
+            break;
+            
         case UIImageOrientationDown:
-        rotation_radians = M_PI; // don't be scared of radians, if you're reading this, you're good at math
-        break;
-        
+            rotation_radians = M_PI; // don't be scared of radians, if you're reading this, you're good at math
+            break;
+            
         case UIImageOrientationRight:
-        rotation_radians = M_PI_2;
-        perpendicular = true;
-        break;
-        
+            rotation_radians = M_PI_2;
+            perpendicular = true;
+            break;
+            
         case UIImageOrientationLeft:
-        rotation_radians = -M_PI_2;
-        perpendicular = true;
-        break;
-        
+            rotation_radians = -M_PI_2;
+            perpendicular = true;
+            break;
+            
         default:
-        break;
+            break;
     }
     
     UIGraphicsBeginImageContext(CGSizeMake(anImage.size.width, anImage.size.height));
@@ -423,7 +425,10 @@
             
             if ((self.cameraRenderController.view.frame.size.width > 0) && (self.cameraRenderController.view.frame.size.height > 0)) {
                 
-                scaledImage = [self imageByScalingNotCroppingForSize:capturedImage toSize:CGSizeMake(self.cameraRenderController.view.frame.size.width * 2, self.cameraRenderController.view.frame.size.height * 2)];
+                CGFloat imgwidth = (CGFloat)[command.arguments[4] floatValue];
+                CGFloat imgheight = (CGFloat)[command.arguments[5] floatValue];
+                
+                scaledImage = [self imageByScalingNotCroppingForSize:capturedImage toSize:CGSizeMake(imgwidth * 2, imgheight * 2)];
             }
             
             UIImage* returnedImage = (scaledImage == nil ? capturedImage : scaledImage);
@@ -470,3 +475,4 @@
     
 }
 @end
+
