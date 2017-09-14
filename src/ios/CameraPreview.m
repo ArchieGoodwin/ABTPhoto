@@ -175,7 +175,7 @@
     if (self.cameraRenderController != NULL) {
         CGFloat maxW = (CGFloat)[command.arguments[0] floatValue];
         CGFloat maxH = (CGFloat)[command.arguments[1] floatValue];
-        [self invokeTakePicture:maxW withHeight:maxH];
+        [self invokeTakePicture:maxW withHeight:maxH command:command];
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Camera not started"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -408,7 +408,7 @@
 }
 
 
-- (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight {
+- (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight command:(CDVInvokedUrlCommand*)command{
     AVCaptureConnection *connection = [self.sessionManager.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     [self.sessionManager.stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef sampleBuffer, NSError *error) {
         NSLog(@"Done creating still image");
