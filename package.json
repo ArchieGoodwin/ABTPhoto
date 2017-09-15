@@ -1,9 +1,9 @@
 {
-    "name": "com.abouttime.camerapreview",
+    "name": "com.snesconsulting.camerapreview"",
     "version": "1.0.0",
     "description": "Cordova Silent Shot Camera Preview Plugin",
     "cordova": {
-        "id": "com.abouttime.camerapreview",
+        "id": "com.snesconsulting.camerapreview"",
         "platforms": [
                       "android",
                       "ios"

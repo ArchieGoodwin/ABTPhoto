@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.abouttime.camerapreview"
+    id="com.snesconsulting.camerapreview"
     version="1.0.1">
     <name>CameraPreview</name>
     <description>Cordova plugin that allows camera interaction from HTML code. Show camera preview popup on top of the HTML.</description>
@@ -12,7 +12,7 @@
     <issue>https://github.com/ArchieGoodwin/ABTPhoto/issues</issue>
 
   <js-module src="www/CameraPreview.js" name="CameraPreview">
-    <clobbers target="com.abouttime.camerapreview" />
+    <clobbers target="com.snesconsulting.camerapreview" />
   </js-module>
 
   <!-- android -->
@@ -20,7 +20,7 @@
     <framework src="com.android.support:support-v4:+" />
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="CameraPreview">
-        <param name="android-package" value="com.abouttime.camerapreview" />
+        <param name="android-package" value="com.snesconsulting.camerapreview" />
         <param name="onload" value="true" />
       </feature>
     </config-file>
