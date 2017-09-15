@@ -2,14 +2,14 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.snesconsulting.camerapreview"
+    id="com.abouttime.camerapreview"
     version="1.0.1">
     <name>CameraPreview</name>
     <description>Cordova plugin that allows camera interaction from HTML code. Show camera preview popup on top of the HTML.</description>
     <license>Apache 2.0</license>
     <keywords>Ionic,Cordova,Camera, Preview, Popup, Floating, Box</keywords>
-    <repo>https://github.com/snesconsulting/CordovaCameraPreview.git</repo>
-    <issue>https://github.com/snesconsulting/CordovaCameraPreview/issues</issue>
+    <repo>https://github.com/ArchieGoodwin/ABTPhoto.git</repo>
+    <issue>https://github.com/ArchieGoodwin/ABTPhoto/issues</issue>
 
   <js-module src="www/CameraPreview.js" name="CameraPreview">
     <clobbers target="cordova.plugins.camerapreview" />
