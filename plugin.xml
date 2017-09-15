@@ -12,7 +12,7 @@
     <issue>https://github.com/ArchieGoodwin/ABTPhoto/issues</issue>
 
   <js-module src="www/CameraPreview.js" name="CameraPreview">
-    <clobbers target="cordova.plugins.camerapreview" />
+    <clobbers target="com.abouttime.camerapreview" />
   </js-module>
 
   <!-- android -->
@@ -20,7 +20,7 @@
     <framework src="com.android.support:support-v4:+" />
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="CameraPreview">
-        <param name="android-package" value="com.snesconsulting.CameraPreview" />
+        <param name="android-package" value="com.abouttime.camerapreview" />
         <param name="onload" value="true" />
       </feature>
     </config-file>
