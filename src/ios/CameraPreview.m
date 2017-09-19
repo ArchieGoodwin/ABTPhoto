@@ -27,15 +27,13 @@
         CGFloat y = (CGFloat)[command.arguments[1] floatValue] + self.webView.frame.origin.y;
         CGFloat width = (CGFloat)[command.arguments[2] floatValue];
         CGFloat height = (CGFloat)[command.arguments[3] floatValue];
-        CGFloat imgwidth = (CGFloat)[command.arguments[4] floatValue];
-        CGFloat imgheight = (CGFloat)[command.arguments[5] floatValue];
-        NSString *defaultCamera = command.arguments[6];
-        BOOL tapToTakePicture = (BOOL)[command.arguments[7] boolValue];
-        BOOL dragEnabled = (BOOL)[command.arguments[8] boolValue];
-        BOOL toBack = (BOOL)[command.arguments[9] boolValue];
-        CGFloat alpha  = (CGFloat)[command.arguments[10] floatValue];
-        BOOL toGallery = (BOOL)[command.arguments[11] boolValue];
-        CGFloat compression = ((CGFloat)[command.arguments[12] floatValue])/100.0;
+        NSString *defaultCamera = command.arguments[4];
+        BOOL tapToTakePicture = (BOOL)[command.arguments[5] boolValue];
+        BOOL dragEnabled = (BOOL)[command.arguments[6] boolValue];
+        BOOL toBack = (BOOL)[command.arguments[7] boolValue];
+        CGFloat alpha  = (CGFloat)[command.arguments[8] floatValue];
+        BOOL toGallery = (BOOL)[command.arguments[9] boolValue];
+        CGFloat compression = ((CGFloat)[command.arguments[10] floatValue])/100.0;
         self.storeToGalery = toGallery;
         self.compression = compression;
         // sleep(3);
@@ -175,7 +173,7 @@
     if (self.cameraRenderController != NULL) {
         CGFloat maxW = (CGFloat)[command.arguments[0] floatValue];
         CGFloat maxH = (CGFloat)[command.arguments[1] floatValue];
-        [self invokeTakePicture:maxW withHeight:maxH command:command];
+        [self invokeTakePicture:maxW withHeight:maxH];
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Camera not started"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -408,7 +406,7 @@
 }
 
 
-- (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight command:(CDVInvokedUrlCommand*)command{
+- (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight{
     AVCaptureConnection *connection = [self.sessionManager.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     [self.sessionManager.stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef sampleBuffer, NSError *error) {
         NSLog(@"Done creating still image");
@@ -422,15 +420,9 @@
             UIImage *capturedImage = [self imageCorrectedForCaptureOrientation:image];
             ///result!!!
             UIImage* scaledImage = nil;
-            
             if ((self.cameraRenderController.view.frame.size.width > 0) && (self.cameraRenderController.view.frame.size.height > 0)) {
-                
-                CGFloat imgwidth = (CGFloat)[command.arguments[4] floatValue];
-                CGFloat imgheight = (CGFloat)[command.arguments[5] floatValue];
-                
-                scaledImage = [self imageByScalingNotCroppingForSize:capturedImage toSize:CGSizeMake(imgwidth * 2, imgheight * 2)];
+                scaledImage = [self imageByScalingNotCroppingForSize:capturedImage toSize:CGSizeMake(maxWidth * 2, maxHeight * 2)];
             }
-            
             UIImage* returnedImage = (scaledImage == nil ? capturedImage : scaledImage);
             
             
