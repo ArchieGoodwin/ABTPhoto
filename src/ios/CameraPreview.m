@@ -22,7 +22,7 @@
         return;
     }
     
-    if (command.arguments.count > 5) {
+    if (command.arguments.count > 3) {
         CGFloat x = (CGFloat)[command.arguments[0] floatValue] + self.webView.frame.origin.x;
         CGFloat y = (CGFloat)[command.arguments[1] floatValue] + self.webView.frame.origin.y;
         CGFloat width = (CGFloat)[command.arguments[2] floatValue];
