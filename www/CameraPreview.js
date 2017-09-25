@@ -16,7 +16,7 @@ CameraPreview.startCamera = function(rect, defaultCamera, tapEnabled, dragEnable
   if (typeof(alpha) === 'undefined') alpha = 1;
   if (typeof(storeToGallery) !== 'boolean') storeToGallery = false;
   if (typeof(compression) === 'undefined') compression = 80; // 0-100. 100 => least amount of compression.
-  exec(onSuccess, onError, PLUGIN_NAME, "startCamera", [rect.x, rect.y, rect.width, rect.height, defaultCamera, !!tapEnabled, !!dragEnabled, !!toBack, alpha, !!storeToGallery, compression]);
+    exec(onSuccess, onError, PLUGIN_NAME, "startCamera", [rect.x, rect.y, rect.width, rect.height, defaultCamera, !!tapEnabled, !!dragEnabled, !!toBack, alpha, !!storeToGallery, compression]);
 };
 CameraPreview.stopCamera = function(onSuccess, onError) {
   exec(onSuccess, onError, PLUGIN_NAME, "stopCamera", []);

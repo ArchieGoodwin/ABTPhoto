@@ -406,7 +406,7 @@
 }
 
 
-- (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight{
+- (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight {
     AVCaptureConnection *connection = [self.sessionManager.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     [self.sessionManager.stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef sampleBuffer, NSError *error) {
         NSLog(@"Done creating still image");
@@ -420,9 +420,12 @@
             UIImage *capturedImage = [self imageCorrectedForCaptureOrientation:image];
             ///result!!!
             UIImage* scaledImage = nil;
+            
             if ((self.cameraRenderController.view.frame.size.width > 0) && (self.cameraRenderController.view.frame.size.height > 0)) {
-                scaledImage = [self imageByScalingNotCroppingForSize:capturedImage toSize:CGSizeMake(maxWidth * 2, maxHeight * 2)];
+                
+                scaledImage = [self imageByScalingAndCroppingForSize:capturedImage toSize:CGSizeMake(maxWidth * 2, maxHeight * 2)];
             }
+            
             UIImage* returnedImage = (scaledImage == nil ? capturedImage : scaledImage);
             
             
@@ -467,4 +470,3 @@
     
 }
 @end
-
