@@ -1,17 +1,17 @@
 {
-    "name": "com.snesconsulting.camerapreview",
-    "version": "1.0.0",
-    "description": "Cordova Silent Shot Camera Preview Plugin",
-    "cordova": {
-        "id": "com.snesconsulting.camerapreview",
-        "platforms": [
-                      "android",
-                      "ios"
-                      ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ArchieGoodwin/ABTPhoto"
-    },
-    "author": "AboutTime Technologies"
+  "name": "com.snesconsulting.camerapreview",
+  "version": "1.0.0",
+  "description": "Cordova Silent Shot Camera Preview Plugin",
+  "cordova": {
+    "id": "com.snesconsulting.camerapreview",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abouttimeruss/ABTPhoto"
+  },
+  "author": "AboutTime Technologies"
 }
