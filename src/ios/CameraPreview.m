@@ -423,7 +423,7 @@
             
             if ((self.cameraRenderController.view.frame.size.width > 0) && (self.cameraRenderController.view.frame.size.height > 0)) {
                 
-                scaledImage = [self imageByScalingAndCroppingForSize:capturedImage toSize:CGSizeMake(maxWidth * 2, maxHeight * 2)];
+                scaledImage = [self imageByScalingAndCroppingForSize:capturedImage toSize:CGSizeMake(maxWidth, maxHeight)];
             }
             
             UIImage* returnedImage = (scaledImage == nil ? capturedImage : scaledImage);
