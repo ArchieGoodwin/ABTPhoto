@@ -418,10 +418,27 @@ public class CameraActivity extends Fragment {
 					//Bitmap finalPic = null;
 					//scale final picture
 					if(maxWidth > 0 && maxHeight > 0){
-						final double scaleHeight = maxWidth/(double)pic.getHeight();
-						final double scaleWidth = maxHeight/(double)pic.getWidth();
-						final double scale  = scaleHeight < scaleWidth ? scaleWidth : scaleHeight;
-						pic  = Bitmap.createScaledBitmap(pic, (int) (pic.getWidth() * scale), (int) (pic.getHeight() * scale), false);
+                        
+                        double scaleHeight = maxHeight / (double) pic.getHeight();
+                        double scaleWidth = maxWidth / (double) pic.getWidth();
+                        double scale = scaleHeight < scaleWidth ? scaleWidth : scaleHeight;
+                        pic = Bitmap.createScaledBitmap(pic, (int) (pic.getWidth() * scale), (int) (pic.getHeight() * scale), false);
+                        
+                        scaleWidth = maxWidth / (double) pic.getWidth();
+                        scaleHeight = maxHeight / (double) pic.getHeight();
+                        scale = scaleHeight < scaleWidth ? scaleWidth : scaleHeight;
+                        final double scaledWidth = scale * (double) pic.getWidth();
+                        final double scaledHeight = scale * (double) pic.getHeight();
+                        
+                        final double left = (maxWidth - scaledWidth) / 2;
+                        final double top = (maxHeight - scaledHeight) / 2;
+                        RectF targetRect = new RectF(left, top, left + scaledWidth, top + scaledHeight);
+                        
+                        Bitmap dest = Bitmap.createBitmap(maxWidth, maxHeight, pic.getConfig());
+                        Canvas canvas = new Canvas(dest);
+                        canvas.drawBitmap(pic, null, targetRect, null);
+                        
+                        pic = dest;
 					}
 
 
