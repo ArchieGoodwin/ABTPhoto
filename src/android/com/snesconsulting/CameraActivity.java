@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.os.Build;
@@ -432,9 +433,9 @@ public class CameraActivity extends Fragment {
                         
                         final double left = (maxWidth - scaledWidth) / 2;
                         final double top = (maxHeight - scaledHeight) / 2;
-                        RectF targetRect = new RectF(left, top, left + scaledWidth, top + scaledHeight);
+                        RectF targetRect = new RectF((float)left, (float)top, (float)(left + scaledWidth), (float)(top + scaledHeight));
                         
-                        Bitmap dest = Bitmap.createBitmap(maxWidth, maxHeight, pic.getConfig());
+                        Bitmap dest = Bitmap.createBitmap((int)maxWidth, (int)maxHeight, pic.getConfig());
                         Canvas canvas = new Canvas(dest);
                         canvas.drawBitmap(pic, null, targetRect, null);
                         
