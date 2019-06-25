@@ -289,14 +289,14 @@ public class CameraActivity extends Fragment {
             e.printStackTrace();
         }
 
-        if (cameraParameters != null) {
+        if (cameraParameters != null && mCamera != null) {
             mCamera.setParameters(cameraParameters);
         }
-
-
+        
+        
         cameraCurrentlyLocked = cameraId;
-
-        if (mPreview.mPreviewSize != null) {
+        
+        if (mPreview.mPreviewSize != null && mCamera != null) {
             mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
             mCamera.startPreview();
         }
